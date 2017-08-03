@@ -1,0 +1,5 @@
+*.png
+hello-world-QR.svg
+sqlparser.iml
+.idea/
+target/
