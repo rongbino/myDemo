@@ -1,7 +1,6 @@
-package com.sogou.test;
+package trong.test;
 
 import com.jayway.jsonpath.JsonPath;
-import net.sf.jsqlparser.expression.operators.relational.OldOracleJoinBinaryExpression;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,7 +21,7 @@ public class JsonpathTest {
     System.out.println(code);
     System.out.println(msg);
 
-    Integer id =  JsonPath.read(json, "$.data.id");
+    Integer id = JsonPath.read(json, "$.data.id");
     System.out.println(id);
     String email = JsonPath.read(json, "$.data.email");
     System.out.println(email);
@@ -33,18 +32,16 @@ public class JsonpathTest {
     System.out.println(permId);
   }
 
-  public String readString(String fileName)
-  {
+  public String readString(String fileName) {
     String str = "";
     File file = new File(fileName);
-    try
-    {
-        FileInputStream in = new FileInputStream(file);
-        int size=in.available();
-        byte[] buffer=new byte[size];
-        in.read(buffer);
-        in.close();
-        str=new String(buffer,"UTF-8");
+    try {
+      FileInputStream in = new FileInputStream(file);
+      int size = in.available();
+      byte[] buffer = new byte[size];
+      in.read(buffer);
+      in.close();
+      str = new String(buffer, "UTF-8");
     } catch (Exception e) {
       e.printStackTrace();
     }

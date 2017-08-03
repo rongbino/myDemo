@@ -1,4 +1,4 @@
-package com.sogou.test;
+package trong.test;
 
 /**
  * Created by rongbin on 2017/6/30.

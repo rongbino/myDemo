@@ -1,4 +1,4 @@
-package com.sogou.test;
+package trong.test;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -13,11 +13,11 @@ public class CheckErrorPhone {
       HashMap<String, String> result = new HashMap();
       File file = new File("D:/26769-all-data-send.csv");
       BufferedReader reader = new BufferedReader(new FileReader(file));
-      
+
       String temp = null;
       String lastPhone = null;
       int line = 0;
-      
+
       List<Long> timeList = new ArrayList<>();
       while ((temp = reader.readLine()) != null) {
         line++;
@@ -30,31 +30,31 @@ public class CheckErrorPhone {
           timeList.clear();
           lastPhone = phone;
         } else {
-          Date  d = null;
+          Date d = null;
           SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
           d = simpleDateFormat.parse(time);
           Long now = d.getTime();
-          
+
           for (Long tt : timeList) {
             if (Math.abs(tt - now) < 60000 && !result.containsKey(phone)) {
               result.put(phone, time + " " + phone + " " + returnCode);
-              System.out.println(time + " " + phone + " " + returnCode + ": " + Math.abs(tt-now));
+              System.out.println(time + " " + phone + " " + returnCode + ": " + Math.abs(tt - now));
             }
           }
-          
+
           timeList.add(now);
         }
       }
-      
+
       System.out.println(line);
       System.out.println("Map size:" + result.size());
       reader.close();
-      
-//      File phoneFile = new File("D:/phone.txt");
-//      FileOutputStream outputStream = new FileOutputStream(phoneFile);
+
+      //      File phoneFile = new File("D:/phone.txt");
+      //      FileOutputStream outputStream = new FileOutputStream(phoneFile);
       FileWriter writer = new FileWriter("D:/phone.txt");
-      for(String aa : result.keySet()) {
-        writer.write(aa+"\r\n");
+      for (String aa : result.keySet()) {
+        writer.write(aa + "\r\n");
       }
       writer.close();
     } catch (Exception e) {

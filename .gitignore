@@ -3,3 +3,7 @@ hello-world-QR.svg
 sqlparser.iml
 .idea/
 target/
+src/main/resources/
+src/test/
+mydata4vipweek2.dat
+*.svg

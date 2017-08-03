@@ -1,4 +1,4 @@
-package com.sogou.test;
+package trong.test;
 
 /**
  * Created by rongbin on 2017/5/27.
@@ -6,12 +6,12 @@ package com.sogou.test;
 public class IntTest {
   public static void main(String[] args) {
     int a = -1;
-    System.out.println(0-a);
-    
+    System.out.println(0 - a);
+
     int b = 5;
-    int ze_b = 0-b;
+    int ze_b = 0 - b;
     System.out.println(ze_b);
-    
+
     try {
       int aInt = Integer.valueOf("aa");
     } catch (Exception e) {

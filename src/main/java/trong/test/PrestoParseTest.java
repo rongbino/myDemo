@@ -1,6 +1,5 @@
-package com.sogou.test;
+package trong.test;
 
-import com.facebook.presto.sql.SqlFormatter;
 import com.facebook.presto.sql.parser.SqlParser;
 import com.facebook.presto.sql.tree.*;
 import com.google.common.base.Joiner;
@@ -18,50 +17,50 @@ import java.util.*;
  */
 public class PrestoParseTest {
 
-  private static ArrayList<String> tableList = new ArrayList<>();
-  private static List<QualifiedName> tbl = Lists.newArrayList();
-  private static Set<String> alias = Sets.newHashSet();
+  private static ArrayList<String>   tableList = new ArrayList<>();
+  private static List<QualifiedName> tbl       = Lists.newArrayList();
+  private static Set<String>         alias     = Sets.newHashSet();
 
   private final IdentityHashMap<Expression, QualifiedName> resolvedNameReferences = new IdentityHashMap<>();
 
   public static void main(String[] args) {
     try {
       com.facebook.presto.sql.parser.SqlParser sqlParser = new SqlParser();
-//      com.facebook.presto.sql.tree.Query query = (com.facebook.presto.sql.tree.Query) sqlParser.createStatement("WITH\n" + "  t1 AS (SELECT udid FROM db1.dw_sign_orc where cdate=20170326),\n" + "  t2 AS (SELECT a1 FROM db2.orc_spec where cdate=20170328)\n" + "SELECT count(distinct t2.a1)\n" + "FROM t1 \n" + "JOIN t2 ON upper(t1.udid) = upper(t2.a1)");
+      //      com.facebook.presto.sql.tree.Query query = (com.facebook.presto.sql.tree.Query) sqlParser.createStatement("WITH\n" + "  t1 AS (SELECT udid FROM db1.dw_sign_orc where cdate=20170326),\n" + "  t2 AS (SELECT a1 FROM db2.orc_spec where cdate=20170328)\n" + "SELECT count(distinct t2.a1)\n" + "FROM t1 \n" + "JOIN t2 ON upper(t1.udid) = upper(t2.a1)");
 
       com.facebook.presto.sql.tree.Query query = (com.facebook.presto.sql.tree.Query) sqlParser.createStatement("select ptype,pv,uv,ip,click,clickuv,clickip,clickout,clickoutuv,\n" + "               round(click/pv,4) as ctr,\n" + "               round(pv/uv,4),\n" + "               round(click/uv,4),\n" + "               case when ptype='xiaohua2nd' then round(clickuv*100/uv,4) else round(clickuv/uv,4) end,\n" + "               round(clickout/uv,4),\n" + "               case when ptype='xiaohua2nd' then round(clickoutuv*100/uv,4) else round(clickoutuv/uv,4) end,'20170422',ctime\n" + "         from\n" + "               (select count(case when (ptype!='toutiao' and page!='%E6%90%9C%E7%8B%97%E5%A4%B4%E6%9D%A1' and user_action=1) or (ptype='toutiao' and user_action=1) then suid else null end) as pv,\n" + "                       count(distinct case when user_action=1 then suid else null end) as uv,\n" + "                       count(distinct case when user_action=1 then user_ip else null end) as ip,\n" + "                       count(case when user_action=2 then suid else null end) as click,\n" + "                       count(distinct case when user_action=2 then suid else null end) as clickuv,\n" + "\t\t\t\t\t   count(distinct case when user_action=2 then user_ip else null end) as clickip,\n" + "                       (count(case when ((ptype!='mini' and ptype!='mini2' and ptype!='mini3' and ptype!='mini4') and user_action=2 and url like '%http%' and !parse_url(decoder_url(url),'HOST') like '%sogou%') or ((ptype='mini' or ptype='mini2' or ptype='mini3' or ptype='mini4') and user_action=2 and url like '%http%' and !parse_url(decoder_url(url),'HOST') like '%123.sogou%') then suid end))clickout,\n" + "                       (count(distinct case when ((ptype!='mini' and ptype!='mini2' and ptype!='mini3' and ptype!='mini4') and user_action=2 and url like '%http%' and !parse_url(decoder_url(url),'HOST') like '%sogou%') or ((ptype='mini' or ptype='mini2' or ptype='mini3' or ptype='mini4') and user_action=2 and url like '%http%' and !parse_url(decoder_url(url),'HOST') like '%123.sogou%') then suid end))clickoutuv,ptype,ctime \n" + "from dh_sub_forall_5min where cdate=20170422 and ctimes='201704221415' and ctime REGEXP '^20\\\\d{10}$' group by ptype,ctime)\n");
-//      com.facebook.presto.sql.tree.Query query = (com.facebook.presto.sql.tree.Query)sqlParser.createStatement("select * from t1");
+      //      com.facebook.presto.sql.tree.Query query = (com.facebook.presto.sql.tree.Query)sqlParser.createStatement("select * from t1");
 
-//      com.facebook.presto.sql.tree.QuerySpecification queryBody = (com.facebook.presto.sql.tree.QuerySpecification)query.getQueryBody();
-//
-//      System.out.println("SQL: " + query.toString());
-//      Optional<Relation> from = queryBody.getFrom();
+      //      com.facebook.presto.sql.tree.QuerySpecification queryBody = (com.facebook.presto.sql.tree.QuerySpecification)query.getQueryBody();
+      //
+      //      System.out.println("SQL: " + query.toString());
+      //      Optional<Relation> from = queryBody.getFrom();
       //queryBody.getChildren().forEach(n->System.out.println(n.toString()));
-//      System.out.println("From = " + from.get());
+      //      System.out.println("From = " + from.get());
 
       PrestoParseTest test = new PrestoParseTest();
       test.print(query);
 
 
-//      com.facebook.presto.sql.tree.Query query2 = (com.facebook.presto.sql.tree.Query)sqlParser.createStatement("SELECT a.time_updated_server/1000, \n" +
-//              "content, \n" +
-//              "nick, \n" +
-//              "name \n" +
-//              "FROM db1.table1 a \n" +
-//              "JOIN db2.table2 b ON a.sender_id = b.user_id \n" +
-//              "JOIN db3.table3 c ON a.channel_id = c.channel_id \n" +
-//              "JOIN db4.table4 d ON c.store_id = d.store_id \n" +
-//              "WHERE sender_id NOT IN \n" +
-//              "  (SELECT user_id \n" +
-//              "   FROM table5) \n" +
-////              "   WHERE store_id IN ('agent_store2:1', \n" +
-////              "                                     'ask:1')) \n" +
-////              "   AND to_timestamp(a.time_updated_server/1000)::date >= '2014-05-01' \n" +
-//              "   GROUP BY 1,2,3,4 \n" +
-//              "   HAVING sum(1) > 500 \n" +
-//              "   ORDER BY 1 ASC");
-//      System.out.println();
-//      test.print(query2);
+      //      com.facebook.presto.sql.tree.Query query2 = (com.facebook.presto.sql.tree.Query)sqlParser.createStatement("SELECT a.time_updated_server/1000, \n" +
+      //              "content, \n" +
+      //              "nick, \n" +
+      //              "name \n" +
+      //              "FROM db1.table1 a \n" +
+      //              "JOIN db2.table2 b ON a.sender_id = b.user_id \n" +
+      //              "JOIN db3.table3 c ON a.channel_id = c.channel_id \n" +
+      //              "JOIN db4.table4 d ON c.store_id = d.store_id \n" +
+      //              "WHERE sender_id NOT IN \n" +
+      //              "  (SELECT user_id \n" +
+      //              "   FROM table5) \n" +
+      ////              "   WHERE store_id IN ('agent_store2:1', \n" +
+      ////              "                                     'ask:1')) \n" +
+      ////              "   AND to_timestamp(a.time_updated_server/1000)::date >= '2014-05-01' \n" +
+      //              "   GROUP BY 1,2,3,4 \n" +
+      //              "   HAVING sum(1) > 500 \n" +
+      //              "   ORDER BY 1 ASC");
+      //      System.out.println();
+      //      test.print(query2);
 
       System.out.println();
       System.out.println(tableList);
@@ -98,7 +97,7 @@ public class PrestoParseTest {
       protected Void visitNode(Node node, Integer indentLevel) {
         System.out.println("node :" + node);
         return null;
-//        throw new UnsupportedOperationException("not yet implemented: " + node);
+        //        throw new UnsupportedOperationException("not yet implemented: " + node);
       }
 
       @Override
