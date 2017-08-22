@@ -149,7 +149,7 @@ public final class QrSegment {
     } else { throw new IllegalArgumentException("ECI assignment value out of range"); }
     return new QrSegment(Mode.ECI, 0, data, data.length * 8);
   }
-	
+
 	
 	
 	/*---- Instance fields ----*/

@@ -162,7 +162,7 @@ public final class QrCode {
     // Create the QR Code symbol
     return new QrCode(version, ecl, bb.getBytes(), mask);
   }
-	
+
 	
 	
 	/*---- Instance fields ----*/

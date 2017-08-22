@@ -36,7 +36,7 @@ final class BitBuffer {
 
   private byte[] data;
   private int    bitLength;
-	
+
 	
 	
 	/*---- Constructor ----*/

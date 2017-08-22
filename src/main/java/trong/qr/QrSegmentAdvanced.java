@@ -36,7 +36,7 @@ import java.util.Objects;
 
 
 public final class QrSegmentAdvanced {
-	
+
 	/*---- Optimal list of segments encoder ----*/
 
   /**
