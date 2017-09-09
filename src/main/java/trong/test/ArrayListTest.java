@@ -1,7 +1,9 @@
 package trong.test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by rongbin on 2017/6/1.
@@ -19,5 +21,10 @@ public class ArrayListTest {
     String bb = "aaa";
     Collections.addAll(s, bb.split("/"));
     System.out.println(String.join(",", s));
+
+    String aa[] = {"1","2"};
+    List<String> ss = Arrays.asList(aa);
+
+    System.out.println(ss);
   }
 }
