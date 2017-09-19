@@ -15,7 +15,13 @@ public class BigIsGreater {
         char[] letters = in.readLine().toCharArray();
 
         int position = -1;
+        boolean isNotLetter = false;
         for (int n = letters.length-1; n >= 0; n--) {
+          // check the input is low case letter
+          if (letters[n] < 97 || letters[n] >122) {
+            isNotLetter = true;
+            break;
+          }
           for (int m = n-1; m >= 0; m--) {
             if (letters[m] < letters[n]) {
               position = m;
@@ -30,11 +36,15 @@ public class BigIsGreater {
             break;
           }
         }
-        char[] beforeP = Arrays.copyOfRange(letters, 0, position+1);
-        char[] afterP = Arrays.copyOfRange(letters, position+1, letters.length);
+        if (isNotLetter) {
+          break;
+        }
+
         if (position == -1) {
           System.out.print("no answer");
         } else {
+          char[] beforeP = Arrays.copyOfRange(letters, 0, position+1);
+          char[] afterP = Arrays.copyOfRange(letters, position+1, letters.length);
           System.out.print(beforeP);
           Arrays.sort(afterP);
           System.out.print(afterP);
