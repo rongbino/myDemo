@@ -7,6 +7,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * 1. Find the highest index i such that s[i] < s[i+], if no such index exists,
+ *    the permutation is the last permutation
+ * 2. Find the highest index j>i such that s[j] > s[i]. Such a j must exist, since i+1 is such a index.
+ * 3. Swap s[i] with s[j]
+ * 4. Reverse the order of all the elements after index i till the last elements
+ */
 public class BigIsGreater {
   public static void main(String[] args) {
     try {
