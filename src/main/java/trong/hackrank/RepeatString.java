@@ -1,6 +1,5 @@
 package trong.hackrank;
 
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Scanner;
 

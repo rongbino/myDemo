@@ -1,7 +1,10 @@
 package trong.hackrank;
 
+import com.sun.tools.javac.util.List;
+
 import java.io.*;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class BigIsGreater {
@@ -10,47 +13,46 @@ public class BigIsGreater {
       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
       int num = Integer.parseInt(in.readLine());
 
-      String[] words = new String[num];
       for (int i = 0; i <= num-1; i++) {
-        words[i] = in.readLine();
-      }
-      in.close();
+        String word = in.readLine();
+        char[] letters = word.toCharArray();
 
-      String input = "";
-      for (int i = 0; i <= num-1; i++) {
-        input = words[i];
-        char[] letters = input.toCharArray();
-
-        // lexicographical sort
         int start = -1;
-        // find the first different
         for (int n = 0; n < letters.length-1; n++) {
           if (letters[n] < letters[n+1]) {
             start = n;
           }
         }
+
+        // no answer
         if (start == -1) {
           System.out.println("no answer");
           continue;
         }
 
         int end = -1;
-        // find the smallest letter
-        for (int n = start + 1; n <= letters.length-1; n++) {
-          if (letters[start] < letters[n]) {
+        // it must exist, because in the letter[n+1] > letter[n]
+        for (int n = start+1; n <= letters.length-1; n++) {
+          if (letters[n] > letters[start]) {
             end = n;
           }
         }
+
+        // swap
         char tmp = letters[end];
         letters[end] = letters[start];
-        letters[start] = letters[end];
+        letters[start] = tmp;
+
+        // reserve
         char[] beforeP = Arrays.copyOfRange(letters, 0, start + 1);
         char[] afterP = Arrays.copyOfRange(letters, start + 1, letters.length);
         System.out.print(beforeP);
-        Arrays.sort(afterP);
-        System.out.print(afterP);
+        for (int n = afterP.length-1; n >=0; n--) {
+          System.out.print(afterP[n]);
+        }
         System.out.println();
       }
+      in.close();
 
     } catch (Exception e) {
       e.printStackTrace();

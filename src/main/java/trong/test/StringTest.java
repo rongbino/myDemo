@@ -1,6 +1,7 @@
 package trong.test;
 
-import joptsimple.internal.Strings;
+
+import com.google.common.base.Strings;
 
 import java.util.HashMap;
 import java.util.Map;
