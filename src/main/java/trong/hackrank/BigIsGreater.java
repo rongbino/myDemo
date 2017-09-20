@@ -1,7 +1,5 @@
 package trong.hackrank;
 
-import com.sun.tools.javac.util.List;
-
 import java.io.*;
 import java.util.Arrays;
 import java.util.Collections;
