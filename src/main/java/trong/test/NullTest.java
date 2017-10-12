@@ -7,5 +7,9 @@ public class NullTest {
     } else {
       System.out.println("right");
     }
+
+//    if () {
+//
+//    }
   }
 }
