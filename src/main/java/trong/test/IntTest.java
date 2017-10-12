@@ -18,5 +18,11 @@ public class IntTest {
       System.out.println("1:" + e.getMessage());
       System.out.println("2:" + e.getMessage());
     }
+
+    long l = 2592000;
+    System.out.println(l);
+    int il = (int)l;
+    System.out.println(il);
+
   }
 }
