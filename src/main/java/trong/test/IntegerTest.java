@@ -22,5 +22,7 @@ public class IntegerTest {
     System.out.println(z);
     z = z.add(a2);
     System.out.println(z);
+
+    System.out.println(z.toString());
   }
 }
