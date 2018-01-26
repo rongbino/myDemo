@@ -91,6 +91,11 @@ public final class QrCodeGeneratorDemo {
     QrCode qr;
 
     // Project Nayuki URL
+    qr = QrCode.encodeText("https://mapi.alipay.com/gateway.do?_input_charset=utf-8&subject=%E6%B5%8B%E8%AF%95%E5%95%86%E5%93%81&sign=85082477d52f04be84bfb09032a0ca19&notify_url=https%3A%2F%2Fcash.sogou.com%2Fnotify%2Fwebasync%2Falipay&qr_pay_mode=4&qrcode_width=200&payment_type=1&out_trade_no=ZF201801191453114923801&partner=2088811923135335&service=create_direct_pay_by_user&total_fee=0.01&return_url=https%3A%2F%2Fcash.sogou.com%2Fnotify%2Fwebsync%2Falipay&sign_type=MD5&seller_id=2088811923135335", QrCode.Ecc.HIGH);
+    qr = new QrCode(qr, 3);  // Change mask, forcing to mask #3
+    writePng(qr.toImage(8, 6), "alipay.png");
+
+    // Project Nayuki URL
     qr = QrCode.encodeText("https://www.nayuki.io/", QrCode.Ecc.HIGH);
     qr = new QrCode(qr, 3);  // Change mask, forcing to mask #3
     writePng(qr.toImage(8, 6), "project-nayuki-QR.png");

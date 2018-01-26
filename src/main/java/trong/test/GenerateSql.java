@@ -16,7 +16,7 @@ public class GenerateSql {
     String sql = "";
     String output = "/search/data/opdir/dsj";
     String dbname = " sogou_passport.";
-    String foramt = " CHARACTER SET utf8 FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n';\n";
+    String foramt = " CHARACTER SET utf8 FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n'';\n";
     for (int i = 0; i < 32; i++) {
       String num = String.format("%02d", i);
       String tablename = "account" + "_" + num;
@@ -57,7 +57,7 @@ public class GenerateSql {
         "/" + tablename + foramt;
     }
 
-    createFile("sql", sql);
+    createFile("sql2", sql);
   }
 
   public static void createSql() {
