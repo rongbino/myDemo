@@ -15,6 +15,7 @@ public class IntegerTest {
     System.out.println(result);
 
     BigDecimal z = BigDecimal.ZERO;
+    BigDecimal z1 = BigDecimal.ZERO;
     BigDecimal a1 = BigDecimal.valueOf(10000.01);
     BigDecimal a2 = BigDecimal.valueOf(20000.02);
 
@@ -23,6 +24,6 @@ public class IntegerTest {
     z = z.add(a2);
     System.out.println(z);
 
-    System.out.println(z.toString());
+    System.out.println(z.add(a1).add(a2).toString());
   }
 }
