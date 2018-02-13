@@ -61,6 +61,7 @@ public class StringTest {
 
     String pass = "15910745324@sohu.com";
     System.out.println(pass.substring(0, pass.indexOf("@")));
+    System.out.println(pass);
 //    System.out.println(url.substring(0, url.lastIndexOf("/")));
 
 //    System.out.println(buffer.toString());
