@@ -6,6 +6,8 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.util.ArrayList;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
 public class FunctionInterfaceTest {
@@ -43,5 +45,38 @@ public class FunctionInterfaceTest {
     test2.stream().filter((s)->s.startsWith("a")).forEach((s)->System.out.println(s));
     System.out.println("//////// map to up case");
     test2.stream().map((s)->s.toUpperCase()).forEach((s)->System.out.println(s));
+
+    // init big list
+    int max = 1000000;
+    ArrayList<String> values = new ArrayList<>(max);
+    for (int i = 0; i < max; i++) {
+      UUID uuid = UUID.randomUUID();
+      values.add(uuid.toString());
+    }
+
+    long t0 = System.nanoTime();
+    long count = values.parallelStream().sorted().count();
+    System.out.println(count);
+
+    long t1 = System.nanoTime();
+    long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+    System.out.println(String.format("parallel sort took: %d ms", millis));
+
+    // parallel sort took: 472 ms
+
+    values = new ArrayList<>(max);
+    for (int i = 0; i < max; i++) {
+      UUID uuid = UUID.randomUUID();
+      values.add(uuid.toString());
+    }
+    System.out.println();
+    // test parallelstream
+    long s_t0 = System.nanoTime();
+
+    long s_count = values.stream().sorted().count();
+    System.out.println("list count:" + s_count);
+    long s_t1 = System.nanoTime();
+    long s_millis = TimeUnit.NANOSECONDS.toMillis(s_t1-s_t0);
+    System.out.println("calculate time: " + s_millis + "ms");
   }
 }
