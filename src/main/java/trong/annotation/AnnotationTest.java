@@ -7,6 +7,8 @@ import sun.reflect.misc.ReflectUtil;
 
 import java.lang.reflect.Field;
 
+@Hint("111")
+@Hint("222")
 public class AnnotationTest {
 
   @UserAnnotation(id = 100, desc = "Tommy")
@@ -26,5 +28,8 @@ public class AnnotationTest {
     Field defaultUserFile = AnnotationTest.class.getField("defaultUser");
     UserAnnotation defaultUserAnnotation = defaultUserFile.getAnnotation(UserAnnotation.class);
     System.out.println("default id: " + defaultUserAnnotation.id() + " default desc: " + defaultUserAnnotation.desc());
+
+    Hint[] hints = AnnotationTest.class.getAnnotationsByType(Hint.class);
+    System.out.println(hints.length);
   }
 }
