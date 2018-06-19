@@ -1,7 +1,8 @@
 package trong.file;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
-import com.sogou.upd.passport.common.utils.JsonUtil;
 import org.apache.commons.io.LineIterator;
 
 import java.io.File;
@@ -29,8 +30,11 @@ public class CommonIO {
           }
         }
       }
-      System.out.println(JsonUtil.obj2Json(count));
+      ObjectMapper mapper = new ObjectMapper();
+      System.out.println(mapper.writeValueAsString(count));
     } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (JsonProcessingException e) {
       e.printStackTrace();
     }
   }

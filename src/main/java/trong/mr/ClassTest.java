@@ -1,6 +1,6 @@
 package trong.mr;
 
-import com.sogou.upd.passport.common.utils.JacksonJsonMapperUtil;
+import com.fasterxml.jackson.core.JsonGenerator;
 import org.springframework.ui.jasperreports.JasperReportsUtils;
 
 import java.time.format.DateTimeFormatter;
@@ -13,7 +13,7 @@ public class ClassTest {
 
     System.out.println(a.getTime().format(DateTimeFormatter.ISO_DATE_TIME));
     try {
-      System.out.println(JacksonJsonMapperUtil.getMapper().writeValueAsString(a));
+      System.out.println();
     } catch (Exception e) {
       e.printStackTrace();
     }

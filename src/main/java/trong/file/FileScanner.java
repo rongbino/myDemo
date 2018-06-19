@@ -1,7 +1,7 @@
 package trong.file;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
-import com.sogou.upd.passport.common.utils.JsonUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,8 +26,8 @@ public class FileScanner {
           count.put(key, 1);
         }
       }
-
-      System.out.println(JsonUtil.obj2Json(count));
+      ObjectMapper mapper = new ObjectMapper();
+      System.out.println(mapper.writeValueAsString(count));
     } catch (Exception e) {
       e.printStackTrace();
     }

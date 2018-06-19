@@ -32,9 +32,19 @@
             <version>2.4.0</version>
         </dependency>
         <dependency>
-            <groupId>sogou-passport</groupId>
-            <artifactId>passport-main-manager</artifactId>
-            <version>1.2</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.8.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.7</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.4</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>

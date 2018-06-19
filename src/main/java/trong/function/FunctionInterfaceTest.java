@@ -1,6 +1,5 @@
 package trong.function;
 
-import com.meidusa.amoeba.sqljep.function.In;
 import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;

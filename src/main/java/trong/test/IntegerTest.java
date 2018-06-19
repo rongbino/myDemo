@@ -1,7 +1,5 @@
 package trong.test;
 
-import scala.Int;
-
 import java.math.BigDecimal;
 
 public class IntegerTest {

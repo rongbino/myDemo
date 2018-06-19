@@ -27,7 +27,8 @@ public class MetrixClockwisePrint {
   }
 
   public void printMetrixInClockWise(int[][] metrix, int size) {
-    if (size == 0) {
+    if (size == 0 || metrix.length != metrix[0].length) {
+      System.out.println("The array must be N*N size");
       return;
     }
 
