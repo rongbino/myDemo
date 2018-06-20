@@ -14,17 +14,25 @@ public class ListTest {
     customerLinkedList.linkLast(1);
     customerLinkedList.linkLast(2);
     customerLinkedList.linkLast(3);
+    customerLinkedList.linkLast(4);
 
     // print the init list
-    for (int i = 0; i < customerLinkedList.size; i++) {
-      System.out.print(" " + customerLinkedList.node(i));
-    }
+    printList(customerLinkedList);
+
     // remove one
     customerLinkedList.remove(1);
-    System.out.println();
     // print the new list
-    for (int i = 0; i < customerLinkedList.size; i++) {
-      System.out.print(" " + customerLinkedList.node(i));
+    printList(customerLinkedList);
+
+    //reserve the list
+    customerLinkedList.reserve();
+    printList(customerLinkedList);
+  }
+
+  public void printList(CustomerLinkedList l) {
+    for (int i = 0; i < l.size; i++) {
+      System.out.print(" " + l.node(i));
     }
+    System.out.println();
   }
 }

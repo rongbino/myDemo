@@ -22,6 +22,31 @@ public class CustomerLinkedList<E> {
     return last.element;
   }
 
+  /**
+   * reserve the list
+   * input 1,2,3
+   * output 3,2,1
+   */
+  public void reserve() {
+    // empty list or 1 node
+    // do nothing
+    if (size == 0 || size == 1) {
+      return;
+    }
+    // last change to be the first
+    last = first;
+    Node<E> pre = null;
+    Node<E> current = first;
+    Node<E> next = null;
+    while (current != null) {
+      next = current.next;
+      current.next = pre;
+      pre = current;
+      current = next;
+    }
+    first = pre;
+  }
+
   public E node(int index) {
     Node<E> node = first;
     for (int i = 0; i < size; i++) {
