@@ -1,4 +1,4 @@
-package trong.alg;
+package trong.alg.list;
 
 public class CustomerDoublyLinkedList<E> {
   // size of Doubly linked

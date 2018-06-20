@@ -1,4 +1,4 @@
-package trong.alg;
+package trong.alg.list;
 
 public class CustomerCircularLinedList<E> {
   // init list size
