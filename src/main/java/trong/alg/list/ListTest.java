@@ -5,9 +5,28 @@ import java.util.LinkedList;
 public class ListTest {
   public static void main(String[] args) {
     ListTest test = new ListTest();
-    test.testLinkedList();
+//    test.testLinkedList();
+    test.testCircularList();
   }
 
+
+  public void testCircularList() {
+    CustomerCircularLinedList<Integer> customerCircularLinedList = new CustomerCircularLinedList<>();
+    customerCircularLinedList.link(0);
+    customerCircularLinedList.link(1);
+    customerCircularLinedList.link(2);
+    customerCircularLinedList.link(3);
+
+    printList(customerCircularLinedList);
+
+    customerCircularLinedList.delete(3);
+//    System.out.println(customerCircularLinedList.getSize());
+    printList(customerCircularLinedList);
+  }
+
+  /**
+   * make test for linked list
+   */
   public void testLinkedList() {
     CustomerLinkedList<Integer> customerLinkedList = new CustomerLinkedList<>();
     customerLinkedList.linkLast(0);
@@ -30,6 +49,13 @@ public class ListTest {
   }
 
   public void printList(CustomerLinkedList l) {
+    for (int i = 0; i < l.size; i++) {
+      System.out.print(" " + l.node(i));
+    }
+    System.out.println();
+  }
+
+  public void printList(CustomerCircularLinedList l) {
     for (int i = 0; i < l.size; i++) {
       System.out.print(" " + l.node(i));
     }
