@@ -1,4 +1,4 @@
-package trong.function;
+package trong.java8.function;
 
 @FunctionalInterface
 public interface Converter<F, T> {

@@ -1,12 +1,9 @@
-package trong.function;
-
-import org.apache.commons.collections.ListUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+package trong.java8.function;
 
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class FunctionInterfaceTest {
@@ -77,5 +74,24 @@ public class FunctionInterfaceTest {
     long s_t1 = System.nanoTime();
     long s_millis = TimeUnit.NANOSECONDS.toMillis(s_t1-s_t0);
     System.out.println("calculate time: " + s_millis + "ms");
+
+    FunctionInterfaceTest t = new FunctionInterfaceTest();
+    t.testFunctionCompose();
+    t.test1();
+  }
+
+  public void testFunctionCompose() {
+    System.out.println("/// test the function compose and and then //");
+    Function<Integer, Integer> doub = e -> e*2;
+    Function<Integer, Integer> square = e -> e*e;
+
+    System.out.println(doub.compose(square).apply(2));
+    System.out.println(doub.andThen(square).apply(2));
+  }
+
+  public void test1() {
+    System.out.println("/// test the function Class //");
+    Function<String, Integer> convert = (from)->Integer.valueOf(from);
+    System.out.println("convert the string to int :" + convert.apply("1"));
   }
 }
