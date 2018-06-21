@@ -71,6 +71,34 @@ public class Tree {
   }
 
   /**
+   * Check the binary tree is balanced search tree
+   * 1. the left node key less than the node key
+   * 2. the right node key greater than the node key
+   * 3. the left and right node must also be binary search tree
+   * @param node
+   * @return
+   */
+  public boolean isBalancedSearchTree(TreeNode node) {
+    if (node == null) {
+      return true;
+    }
+    // false if left data is > than node data
+    if (node.left != null && node.left.value > node.value)  {
+      return false;
+    }
+    // false if right node data is < than node data
+    if (node.right != null && node.right.value < node.value) {
+      return false;
+    }
+    // false if. recursively, the left or right is not a BST
+    if (!isBalancedSearchTree(node.left) || !isBalancedSearchTree(node.right)) {
+      return false;
+    }
+    // pass all
+    return true;
+  }
+
+  /**
    * The tree is balanced or not
    *
    * @param node
@@ -175,11 +203,11 @@ public class Tree {
   }
 
   public static void main(String[] args) {
-    TreeNode root = new TreeNode(1);
-    TreeNode left1 = new TreeNode(2);
-    TreeNode right1 = new TreeNode(2);
-    TreeNode left2 = new TreeNode(3);
-    TreeNode left3 = new TreeNode(4);
+    TreeNode root = new TreeNode(8);
+    TreeNode left1 = new TreeNode(7);
+    TreeNode right1 = new TreeNode(9);
+    TreeNode left2 = new TreeNode(6);
+    TreeNode left3 = new TreeNode(5);
     root.setLeft(left1);
     root.setRight(right1);
     left1.setLeft(left2);
@@ -192,6 +220,7 @@ public class Tree {
     System.out.println("The number of node no child:" + t.getNumOfNoChildNode(root));
     System.out.println("Is balanced tree:" + t.isBalanced(root));
     System.out.println("The number of k level:" + t.numOfkLevelTreeNode(root, 3));
+    System.out.println("Is balanced search tree:" + t.isBalancedSearchTree(root));
   }
 }
 
