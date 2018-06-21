@@ -10,6 +10,8 @@ public class Tree {
 
   /**
    * The tree is complete tree or not
+   * 1. the binary tree in which every level except the last level is full filled
+   * 2. all nodes are as far as left as possible
    *
    * @param root
    * @return
@@ -221,6 +223,7 @@ public class Tree {
     System.out.println("Is balanced tree:" + t.isBalanced(root));
     System.out.println("The number of k level:" + t.numOfkLevelTreeNode(root, 3));
     System.out.println("Is balanced search tree:" + t.isBalancedSearchTree(root));
+    System.out.println("Is complete tree:" + t.isCompleteTreeNode(root));
   }
 }
 
