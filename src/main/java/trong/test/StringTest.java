@@ -62,6 +62,14 @@ public class StringTest {
     String pass = "15910745324@sohu.com";
     System.out.println(pass.substring(0, pass.indexOf("@")));
     System.out.println(pass);
+
+    String str1 = new String("Hello");
+    str1.concat(" aa");
+    System.out.println(str1);
+
+    String str2 = "Hello2";
+    String str3 = str2.concat(" aa");
+    System.out.println(str3);
 //    System.out.println(url.substring(0, url.lastIndexOf("/")));
 
 //    System.out.println(buffer.toString());
