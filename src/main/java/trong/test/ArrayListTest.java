@@ -12,6 +12,10 @@ import java.util.List;
  */
 public class ArrayListTest {
   public static void main(String[] args) {
+    ArrayListTest.ArrayTest();
+  }
+
+  public static void ArrayTestOne() {
     ArrayList<String> s = new ArrayList<>();
 
     s.add("a=b");
@@ -28,5 +32,20 @@ public class ArrayListTest {
     List<String> ss = Arrays.asList(aa);
 
     System.out.println(ss);
+  }
+
+  public static void ArrayTest() {
+    ArrayList<String> one = new ArrayList<>();
+    one.add("1");
+    one.add("2");
+
+    ArrayList<String> two = new ArrayList<>(one);
+    two.add("3");
+    two.add("4");
+
+    System.out.println("two=====");
+    System.out.println(two);
+    System.out.println("one+++++");
+    System.out.println(one);
   }
 }
