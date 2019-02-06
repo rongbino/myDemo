@@ -20,6 +20,11 @@ public class ListSub {
 
         List<String> tmp = new ArrayList<>();
         while (offset <= size) {
+            /**
+             * sublist
+             * include the start index
+             * exclude the to index
+             */
             tmp = all.subList(start, offset);
             System.out.println(tmp);
             start = offset;
