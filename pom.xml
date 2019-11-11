@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <java.version>1.8</java.version>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
