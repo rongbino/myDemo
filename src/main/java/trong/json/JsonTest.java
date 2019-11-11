@@ -33,7 +33,8 @@ public class JsonTest {
         map.put("map", vl);
 
         f.put("list", list);
-        f.put("enum", map);
+        f.put("list2", list);
+//        f.put("enum", map);
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
