@@ -1,10 +1,5 @@
 package trong.annotation;
 
-import com.google.common.reflect.Reflection;
-import org.apache.commons.lang3.reflect.FieldUtils;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import sun.reflect.misc.ReflectUtil;
-
 import java.lang.reflect.Field;
 
 @Hint("111")

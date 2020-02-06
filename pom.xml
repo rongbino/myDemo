@@ -82,6 +82,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.hankcs/hanlp -->
+        <dependency>
+            <groupId>com.hankcs</groupId>
+            <artifactId>hanlp</artifactId>
+            <version>portable-1.7.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.fracpete</groupId>
+            <artifactId>sizeofag</artifactId>
+            <version>1.0.4</version>
+        </dependency>
     </dependencies>
     <build>
     <resources>
